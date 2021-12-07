@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RGB CMD</title>
+    <style>
+        #main {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #block {
+            height: 500px;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="main">
+    <div id="block"></div>
+    <form>
+        <input type="range" name="red" id="red" min="0" max="255">
+        <input type="range" name="green" id="green" min="0" max="255">
+        <input type="range" name="blue" id="blue" min="0" max="255">
+    </form>
+</div>
+
+<script !src="">
+    const red = document.getElementById('red');
+    const green = document.getElementById('green');
+    const blue = document.getElementById('blue');
+    const block = document.getElementById('block');
+    block.setAttribute('style', `background: rgb(${red.value},${green.value},${blue.value})`);
+
+    [...document.querySelectorAll('input')].forEach((element) => {
+        element.addEventListener('input', (e) => {
+            block.setAttribute('style', `background:rgb(${red.value},${green.value},${blue.value})`);
+        })
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<canvas id="canvas" width="400px" height="320px" style="background-color: green">
+
+</canvas>
+<script !src="">
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+
+    let x = 20, y = 200 - 40;
+    let rad = 10;
+
+    const draw = () => {
+        context.beginPath();
+        context.arc(x, y, rad, 0, 2 * Math.PI);
+        context.stroke();
+        context.fillStyle = 'white';
+        context.fill();
+        context.closePath();
+    }
+
+    const update = () => {
+        x += 1;
+        if (x >= canvas.clientWidth) {
+            x = 0;
+        }
+    }
+
+
+    const main = () => {
+        context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+        update();
+        draw();
+        requestAnimationFrame(main);
+    }
+
+    main();
+</script>
+</body>
+</html>
